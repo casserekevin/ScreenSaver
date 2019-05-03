@@ -10,23 +10,21 @@ private:
 public:
 	ShaderReader(){}
 
-	bool read(const char* filename, std::stringstream& result) {
+	bool read(const char* filepath, std::stringstream& result) {
 		{
 			try {
-				std::ifstream file;
+				std::ifstream file(filepath);
 				file.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-				file.open(filename);
 
 				result << file.rdbuf();
 
 				file.close();
-
 				return true;
 			}
 			catch (std::exception e) {
-				std::cerr << "[ERRO] - " << filename << ": " << e.what() << std::endl;
+				std::cerr << "[ERRO] - " << filepath << ": " << e.what() << std::endl;
+				return false;
 			}
-			return false;
 		}
 	}
 };

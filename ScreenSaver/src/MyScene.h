@@ -122,7 +122,7 @@ public:
 			std::stringstream ss;
 			ss << "res/obj/" << this->configuration->getOBJDataAt(i)->getFilepath();
 			std::string pathfile = ss.str();
-			OBJ* obj = new OBJ(meshReader->loadMesh(pathfile), this->configuration->getOBJDataAt(i), program); 
+			OBJ* obj = new OBJ(meshReader->read(pathfile), this->configuration->getOBJDataAt(i), program); 
 			objs.push_back(obj);
 		}
 

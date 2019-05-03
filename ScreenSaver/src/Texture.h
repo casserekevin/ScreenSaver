@@ -12,11 +12,11 @@ private:
 	GLint textureUnit;
 
 public:
-	Texture(const char* filename, GLenum type, GLint textureUnit): type(type), textureUnit(textureUnit) {
+	Texture(const char* pathfile, GLenum type, GLint textureUnit): type(type), textureUnit(textureUnit) {
 		//Carrega imagem
 		int width;
 		int height;
-		unsigned char* dataImage = SOIL_load_image(filename, &width, &height, nullptr, SOIL_LOAD_RGBA);
+		unsigned char* dataImage = SOIL_load_image(pathfile, &width, &height, nullptr, SOIL_LOAD_RGBA);
 
 		//Gera textura
 		glGenTextures(1, &this->textureID);

@@ -25,9 +25,9 @@ private:
 		std::stringstream vertexSourceStream;
 		std::stringstream fragmentSourceStream;
 
-		ShaderReader* sh = new ShaderReader();
-		sh->read(vertexFilePath, vertexSourceStream);
-		sh->read(fragmentFilePath, fragmentSourceStream);
+		ShaderReader* shaderReader = new ShaderReader();
+		shaderReader->read(vertexFilePath, vertexSourceStream);
+		shaderReader->read(fragmentFilePath, fragmentSourceStream);
 
 		this->vertexSource = vertexSourceStream.str();
 		this->fragmentSource = fragmentSourceStream.str();
@@ -36,7 +36,7 @@ private:
 		if (geometryFilePath != "") {
 			std::stringstream geometrySourceStream;
 
-			sh->read(geometryFilePath, geometrySourceStream);
+			shaderReader->read(geometryFilePath, geometrySourceStream);
 
 			this->geometrySource = geometrySourceStream.str();
 		}

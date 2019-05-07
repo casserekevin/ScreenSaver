@@ -11,6 +11,8 @@
 #include "../VertexBuffer.h"
 #include "../Texture.h"
 
+#include "../Game.h"
+
 class Mesh;
 
 class Group {
@@ -51,7 +53,7 @@ public:
 
 
 
-	void createVAOandTexture() {
+	void createVAOandTexture(Game* game) {
 		glGenVertexArrays(1, &this->vaoID);
 		glBindVertexArray(this->vaoID);
 
@@ -61,6 +63,7 @@ public:
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 
 		this->numberOfVertices = vec_positions.size();
+		game->addLimitsObject(vec_positions.at(1).y, vec_positions.at(0).x, vec_positions.at(0).y, vec_positions.at(2).x);
 
 		std::vector<glm::vec2> vec_textures = generateTextureData();
 		VertexBuffer* vbo_texture = new VertexBuffer(vec_textures.size() * sizeof(glm::vec2), vec_textures.data());

@@ -27,7 +27,7 @@ private:
 public:
 	MeshReader(){}
 
-	Mesh* read(std::string filepath) {
+	Mesh* read(std::string filepath, Game* game) {
 		try {
 			Mesh* mesh = new Mesh();
 
@@ -230,7 +230,7 @@ public:
 					
 				}
 			}
-			mesh->getGroup()->createVAOandTexture();
+			mesh->getGroup()->createVAOandTexture(game);
 			
 			file.close();
 

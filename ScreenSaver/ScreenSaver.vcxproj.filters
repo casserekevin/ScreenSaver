@@ -17,7 +17,6 @@
     <ClInclude Include="src\OBJClasses\Mesh.h" />
     <ClInclude Include="src\OBJClasses\OBJ.h" />
     <ClInclude Include="src\Configuration.h" />
-    <ClInclude Include="src\LightFunction.h" />
     <ClInclude Include="src\MyScene.h" />
     <ClInclude Include="src\Normal.h" />
     <ClInclude Include="src\OBJData.h" />
@@ -30,5 +29,9 @@
     <ClInclude Include="src\Window.h" />
     <ClInclude Include="src\OBJClasses\Reader\ShaderReader.h" />
     <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\Limits.h" />
+    <ClInclude Include="src\Time.h" />
+    <ClInclude Include="src\Light.h" />
   </ItemGroup>
 </Project>

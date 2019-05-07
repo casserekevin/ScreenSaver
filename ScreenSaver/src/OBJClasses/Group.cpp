@@ -25,9 +25,9 @@ std::vector<glm::vec2> Group::generateTextureData() {
 
 std::vector<glm::vec3> Group::generateColorData() {
 	std::vector <glm::vec3> vector = {
-		glm::vec3(0.0f, 0.0f, 1.0f),
-		glm::vec3(1.0f, 0.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f),
+		glm::vec3(0.0f, 0.0f, 1.0f), //left
+		glm::vec3(1.0f, 0.0f, 0.0f), //top
+		glm::vec3(0.0f, 1.0f, 0.0f), //right
 	};
 	return vector;
 }

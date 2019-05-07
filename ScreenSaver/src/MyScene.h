@@ -12,11 +12,9 @@
 
 #include "Program.h"
 #include "OpenGLErrors.h"
-#include "Normal.h"
-#include "Speed.h"
-#include "LightFunction.h"
 #include "Configuration.h"
 #include "Camera.h"
+#include "Time.h"
 
 #include "OBJClasses/OBJ.h"
 #include "OBJClasses/Reader/MeshReader.h"
@@ -36,13 +34,15 @@ private:
 	//-------------------------------------------------------
 	//DADOS 
 	//time
-	float m_deltaTime = 0.0f;
+	Time* time = new Time();
+	/*float m_deltaTime = 0.0f;*/
 	
-	//model matrix
-	Speed* speed = new Speed();
+
+	Game* game;
+	/*Speed* speed = new Speed();
 
 	float m_posicaoAtualX = 0.0f;
-	float m_posicaoAtualY = 0.0f;
+	float m_posicaoAtualY = 0.0f;*/
 	
 	Camera* camera;
 
@@ -54,7 +54,7 @@ private:
 
 	//Funcoes:
 	void processKeyboard() {
-		this->camera->calculateSpeedRate(m_deltaTime);
+		this->camera->calculateSpeedRate(this->time->getDelta());
 		if (glfwGetKey(this->windowThatIsInserted, GLFW_KEY_W) == GLFW_PRESS) {
 			this->camera->moveForward();
 		}
@@ -117,12 +117,13 @@ public:
 	MyScene(GLFWwindow* window, int width, int height, Configuration* configuration) : windowThatIsInserted(window), width(width), height(height), configuration(configuration), camera(configuration->getCamera()) {
 		program = new Program("res/shaders/vertex.shader", "res/shaders/fragment.shader");
 
+		this->game = new Game();
 		MeshReader* meshReader = new MeshReader();
 		for (int i = 0; i < this->configuration->getNumberOfData(); i++) {
 			std::stringstream ss;
 			ss << "res/obj/" << this->configuration->getOBJDataAt(i)->getFilepath();
 			std::string pathfile = ss.str();
-			OBJ* obj = new OBJ(meshReader->read(pathfile), this->configuration->getOBJDataAt(i), program); 
+			OBJ* obj = new OBJ(meshReader->read(pathfile, game), this->configuration->getOBJDataAt(i), program, game); 
 			objs.push_back(obj);
 		}
 
@@ -141,13 +142,14 @@ public:
 
 		for (int i = 0; i < objs.size(); i++) {
 			objs.at(i)->draw();
+			objs.at(i)->update(this->game, this->time);
 		}
 		//---------------------------------------------------------
 		//Lógica do tempo
-		static float lastFrame = glfwGetTime();
+		/*static float lastFrame = glfwGetTime();
 		float currentFrame = glfwGetTime();
 		m_deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame;
+		lastFrame = currentFrame;*/
 
 
 		//Normal normal;

@@ -119,22 +119,6 @@ public:
 		glfwSetKeyCallback(this->window, keyboardCallback);
 	}
 	
-	//getters
-	inline GLFWwindow* getWindow() {
-		return this->window;
-	}
-	inline int getWidth() {
-		return this->width;
-	}
-	inline int getHeight() {
-		return this->height;
-	}
-	
-	//setters
-	inline void setScene(std::unique_ptr<Scene> scene) {
-		this->scene = std::move(scene);
-	}
-
 	void update() {
 		this->scene->processKeyboard();
 		glfwPollEvents();
@@ -146,9 +130,21 @@ public:
 		glfwSwapBuffers(this->window);
 	}
 
+
+
 	~Window() {
 		glfwDestroyWindow(this->window);
 		glfwTerminate();
 	}
+
+
+
+	//getters
+	inline GLFWwindow* getWindow() { return this->window; }
+	inline int getWidth() { return this->width; }
+	inline int getHeight() { return this->height; }
+	
+	//setters
+	void setScene(std::unique_ptr<Scene> scene) { this->scene = std::move(scene); }
 };
 

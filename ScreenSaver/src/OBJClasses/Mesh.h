@@ -61,8 +61,8 @@ public:
 	//GETTERS
 	inline Group* getGroup() { return this->group; }
 	inline glm::vec3* getPositionAt(int index) { return this->positions.at(index); }
-	inline glm::vec3* getNormalAt(int index) { return this->normals.at(index); }
 	inline glm::vec2* getTextureAt(int index) { return this->textures.at(index); }
+	inline glm::vec3* getNormalAt(int index) { return this->normals.at(index); }
 
 	//SETTERS
 	void setObjThatIsInserted(OBJ* obj) { this->objThatIsInserted = obj; }

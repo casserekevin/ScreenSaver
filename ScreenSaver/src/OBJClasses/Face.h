@@ -39,5 +39,6 @@ public:
 	//GETTERS
 	inline int getIndexPositionAt(int index) { return this->indexPositions.at(index); }
 	inline int getIndexTextureAt(int index) { return this->indexTextures.at(index); }
+	inline int getIndexNormalAt(int index) { return this->indexNormals.at(index); }
 	inline int getSizeOfFace() { return this->size; }
 };

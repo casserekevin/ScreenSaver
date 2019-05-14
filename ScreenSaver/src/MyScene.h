@@ -31,20 +31,13 @@ private:
 	Program* program;
 	std::vector<OBJ* > objs;
 
-	//-------------------------------------------------------
-	//DADOS 
-	//time
-	Time* time = new Time();
-	/*float m_deltaTime = 0.0f;*/
 	
-
+	Time* time = new Time();
+	
 	Game* game;
-	/*Speed* speed = new Speed();
-
-	float m_posicaoAtualX = 0.0f;
-	float m_posicaoAtualY = 0.0f;*/
 	
 	Camera* camera;
+
 
 	bool m_firstMouse = true;
 	float m_lastX = (float)this->width / 2.0;
